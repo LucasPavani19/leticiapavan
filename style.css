@@ -1759,14 +1759,73 @@ footer a:hover {
 }
 @media (max-width: 480px) {
     nav ul {
-      flex-wrap: wrap;            /* permite quebrar linha sem distorcer */
-      gap: 0.5rem;                /* diminui o espaço horizontal entre itens */
-      justify-content: center;    /* centraliza */
+      display: flex;
+      justify-content: space-around; /* Distribui o espaço uniformemente */
+      width: 100%;
+      gap: 0; /* Remove o gap extra para evitar excesso de espaço */
+      padding: 0;
+      margin: 0;
+    }
+    
+    nav li {
+      flex: 1;           /* Cada item ocupa a mesma fração do espaço */
+      text-align: center;
     }
     
     nav a {
-      font-size: 0.85rem;         /* reduz a fonte para caber em linha */
-      padding-bottom: 1px;        /* opcional: ajusta espaçamento interno */
+      font-size: 0.85rem; /* Tamanho da fonte ajustado para caber bem */
+      padding: 8px 4px;   /* Espaçamento interno que mantém o botão confortável */
+      white-space: nowrap; /* Garante que o texto não quebre */
+    }
+    
+    /* Se houver separadores (como <h4>|</h4>), opcionalmente os esconda */
+    nav h4 {
+      display: none;
+    }
+  }
+  @media (max-width: 480px) {
+    /* Ajuste do header e título */
+    header {
+      padding: 0.5rem 1rem;
+    }
+    .header-title {
+      font-size: 1.1rem; /* Diminui o título */
+    }
+  
+    /* Menu */
+    nav {
+      width: 100%;
+      padding: 0;  /* Remove paddings extras */
+      margin-top: 0.5rem;
+    }
+    nav ul {
+      display: flex;
+      flex-wrap: nowrap;        /* Mantém tudo em uma só linha */
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;              /* Espaço mínimo entre itens */
+      margin: 0;
+      padding: 0;
+    }
+  
+    /* Cada item do menu e o separador “|” */
+    nav li, nav h4 {
+      flex: 0 0 auto;           /* Não deixa encolher demais e não quebra */
+      text-align: center;
+      margin: 0;
+    }
+  
+    /* Links do menu */
+    nav a {
+      font-size: 0.75rem;       /* Fonte bem reduzida para caber */
+      padding: 4px 6px;         /* Padding mínimo */
+      white-space: nowrap;      /* Impede quebra de texto dentro do link */
+    }
+  
+    /* Opcional: Ajustar o separador para ficar menor também */
+    nav h4 {
+      font-size: 0.75rem;       /* Tamanho do separador */
+      line-height: 1;           /* Ajusta a altura da linha */
     }
   }
   
