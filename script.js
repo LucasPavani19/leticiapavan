@@ -1,15 +1,13 @@
-// Inicialização do EmailJS
+// Inicialização do EmailJS com a chave correta
 (function() {
     emailjs.init("JxP5eK-blb22088E5");
 })();
 
-// Carrossel de imagens
+// Carrossel de imagens (sem logs de depuração)
 function startCarousel() {
     const images = document.querySelectorAll('.carousel-image');
     let currentIndex = 0;
-
     images[0].classList.add('active');
-
     setInterval(() => {
         images[currentIndex].classList.remove('active');
         currentIndex = (currentIndex + 1) % images.length;
@@ -17,134 +15,125 @@ function startCarousel() {
     }, 4000);
 }
 
-// Funcionalidade de agendamento
+// Função para sanitizar entradas (removendo caracteres especiais potencialmente perigosos)
+function sanitizeInput(str) {
+    return str.replace(/[&<>"'\/]/g, function(s) {
+        const entityMap = {
+            '&': '&amp;',
+            '<': '&lt;',
+            '>': '&gt;',
+            '"': '&quot;',
+            "'": '&#39;',
+            '/': '&#x2F;'
+        };
+        return entityMap[s];
+    });
+}
+
+// Funcionalidade de agendamento e gerenciamento do banner de cookies
 document.addEventListener('DOMContentLoaded', function() {
     const serviceCards = document.querySelectorAll('.service-card');
     const bookingForm = document.getElementById('bookingForm');
     const selectedServiceSpan = document.getElementById('selectedService');
     const appointmentForm = document.getElementById('appointmentForm');
-    const darkModeToggle = document.getElementById('darkModeToggle');
+    const formFeedback = document.getElementById('formFeedback');
 
     // Esconder formulário inicialmente
     if (bookingForm) {
         bookingForm.style.display = 'none';
     }
 
-    // Selecionar serviço
+    // Event listener para o link do menu "Agendar Sessão"
+    const menuBookingLink = document.querySelector('a[href="#bookingForm"]');
+    if (menuBookingLink && bookingForm) {
+        menuBookingLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            bookingForm.style.display = 'block';
+            bookingForm.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        });
+    }
+
+    // Selecionar serviço via card
     serviceCards.forEach(card => {
         const selectButton = card.querySelector('.select-service');
-        
         selectButton.addEventListener('click', () => {
-            // Remove seleção anterior
             serviceCards.forEach(c => c.classList.remove('selected'));
-            
-            // Seleciona o novo card
             card.classList.add('selected');
-            
-            // Atualiza informações do formulário
             const serviceName = card.getAttribute('data-service');
             selectedServiceSpan.textContent = serviceName;
-            
-            // Mostra o formulário
             if (bookingForm) {
                 bookingForm.style.display = 'block';
-                // Scroll suave até o formulário
+                formFeedback.textContent = '';
                 bookingForm.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }
         });
     });
 
-    // Envio do formulário
-    if (appointmentForm) {
-        appointmentForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const name = document.getElementById('name').value;
-            const whatsapp = document.getElementById('whatsapp').value;
-            const service = selectedServiceSpan.textContent;
-
-            // Validações
-            if (!/^[0-9]{11}$/.test(whatsapp)) {
-                alert('Por favor, insira um número de WhatsApp válido');
-                return;
-            }
-            
-            if (name.length < 3) {
-                alert('Por favor, insira um nome válido');
-                return;
-            }
-
-            // Preparar link do WhatsApp
-            const whatsappMessage = encodeURIComponent(
-                `Olá! Gostaria de agendar um horário.\n\n` +
-                `Nome: ${name}\n` +
-                `Tratamento: ${service}\n`
-            );
-            const whatsappLink = `https://wa.me/5565999417801?text=${whatsappMessage}`;
-
-            // Enviar email usando EmailJS
-            emailjs.send("service_n0321ef", "template_1u6f2vr", {
-                from_name: name,
-                service: service,
-                whatsapp: whatsapp,
-                whatsapp_link: whatsappLink
-            })
-            .then(
-                function(response) {
-                    console.log("EMAIL ENVIADO", response);
-                    // Redirecionar para WhatsApp
-                    window.open(whatsappLink);
-                    
-                    // Limpar formulário
-                    appointmentForm.reset();
-                    bookingForm.style.display = 'none';
-                    serviceCards.forEach(c => c.classList.remove('selected'));
-                },
-                function(error) {
-                    console.log("ERRO NO EMAIL", error);
-                    alert("Houve um erro ao processar sua solicitação. Por favor, tente novamente.");
-                }
-            );
+    // Envio do formulário com validação e sanitização
+    appointmentForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        formFeedback.textContent = '';
+        let name = sanitizeInput(document.getElementById('name').value.trim());
+        let whatsapp = sanitizeInput(document.getElementById('whatsapp').value.trim());
+        let appointmentDate = document.getElementById('appointmentDate').value;
+        let service = selectedServiceSpan.textContent;
+        
+        if (!/^[0-9]{11}$/.test(whatsapp)) {
+            formFeedback.textContent = 'Por favor, insira um número de WhatsApp válido';
+            return;
+        }
+        if (name.length < 3) {
+            formFeedback.textContent = 'Por favor, insira um nome válido';
+            return;
+        }
+        if (!appointmentDate) {
+            formFeedback.textContent = 'Por favor, selecione uma data para a sessão';
+            return;
+        }
+        
+        const whatsappMessage = encodeURIComponent(
+            `Olá! Gostaria de agendar um horário.\n\n` +
+            `Nome: ${name}\n` +
+            `Tratamento: ${service}\n` +
+            `Data da consulta: ${appointmentDate}\n` +
+            `WhatsApp: ${whatsapp}`
+        );
+        const whatsappLink = `https://api.whatsapp.com/send?phone=5565999417801&text=${whatsappMessage}`;
+        
+        emailjs.send("service_n0321ef", "template_1u6f2vr", {
+            from_name: name,
+            service: service,
+            whatsapp: whatsapp,
+            appointment_date: appointmentDate,
+            whatsapp_link: whatsappLink
+        })
+        .then(function(response) {
+            window.open(whatsappLink);
+            appointmentForm.reset();
+            bookingForm.style.display = 'none';
+            serviceCards.forEach(c => c.classList.remove('selected'));
+            formFeedback.style.color = 'green';
+            formFeedback.textContent = "Email enviado com sucesso! Você será respondido(a) em breve.";
+        }, function(error) {
+            formFeedback.textContent = "Houve um erro ao processar sua solicitação. Por favor, tente novamente.";
         });
-    }
-
+    });
+    
     // Iniciar carrossel
     window.addEventListener('load', startCarousel);
 
-    // Verificar se há preferência salva
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-        document.documentElement.setAttribute('data-theme', savedTheme);
-        darkModeToggle.textContent = savedTheme === 'dark' ? '🌞' : '🌓';
+    // Lógica do banner de cookies
+    const cookieConsent = document.getElementById('cookieConsent');
+    const acceptCookiesButton = document.getElementById('acceptCookies');
+    
+    if (!localStorage.getItem('cookiesAccepted')) {
+        cookieConsent.style.display = 'flex';
+    } else {
+        cookieConsent.style.display = 'none';
     }
     
-    // Alternar tema
-    darkModeToggle.addEventListener('click', () => {
-        const currentTheme = document.documentElement.getAttribute('data-theme');
-        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-        
-        document.documentElement.setAttribute('data-theme', newTheme);
-        localStorage.setItem('theme', newTheme);
-        
-        // Atualizar ícone do botão
-        darkModeToggle.textContent = newTheme === 'dark' ? '🌞' : '🌓';
+    acceptCookiesButton.addEventListener('click', function() {
+        localStorage.setItem('cookiesAccepted', 'true');
+        cookieConsent.style.display = 'none';
     });
 });
-
-// Para enviar o email:
-emailjs.send("service_n0321ef", "template_1u6f2vr", {
-    to_email: "psicologaleticiapavan@gmail.com",
-    from_name: name,
-    from_email: email,
-    message: message
-})
-.then(
-    function(response) {
-        console.log("SUCCESS", response);
-        alert("Email enviado com sucesso! Você será respondido(a) em breve.");
-    },
-    function(error) {
-        console.log("FAILED", error);
-        alert("Erro ao enviar email. Tente novamente.");
-    }
-); 

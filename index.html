@@ -1,19 +1,40 @@
 <!DOCTYPE html>
 <html lang="pt-BR" data-theme="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Psicóloga Letícia Pavan - Psicóloga Infantil. Atendimento infantil com abordagem lúdica e personalizada. Agende sua consulta.">
-    <meta name="keywords" content="psicólogo infantil, desenvolvimento infantil, terapia infantil, psicologia infantil">
-    <title>Letícia Pavan | Psicóloga Infantil</title>
-    <link rel="stylesheet" href="style.css?v=1.0.1">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
-        
-        [data-theme="dark"] .service-card p {
-            color: #ffffff;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Psicóloga Letícia Pavan - Psicóloga Infantil. Atendimento infantil com abordagem lúdica e personalizada. Agende sua consulta.">
+  <meta name="keywords" content="psicólogo infantil, desenvolvimento infantil, terapia infantil, psicologia infantil">
+  <title>Letícia Pavan | Psicóloga Infantil</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="img/favicon.png">
+
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="Letícia Pavan | Psicóloga Infantil">
+  <meta property="og:description" content="Psicóloga Letícia Pavan - Psicóloga Infantil. Atendimento infantil com abordagem lúdica e personalizada. Agende sua consulta.">
+  <meta property="og:image" content="img/og-image.png">
+  <meta property="og:url" content="https://seudominio.com">
+  <meta property="og:type" content="website">
+
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Letícia Pavan | Psicóloga Infantil">
+  <meta name="twitter:description" content="Psicóloga Letícia Pavan - Psicóloga Infantil. Atendimento infantil com abordagem lúdica e personalizada. Agende sua consulta.">
+  <meta name="twitter:image" content="img/og-image.png">
+
+  <!-- Importação da fonte Playfair Display para o header -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+  
+  <!-- Importação da fonte Quicksand para o restante -->
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+    [data-theme="dark"] .service-card p {
+      color: #ffffff;
+    }
+  </style>
+
+  <link rel="stylesheet" href="style.css?v=1.0.1">
 </head>
 <body>
     <header>
@@ -28,204 +49,135 @@
         <nav>
             <ul>
                 <li><a href="#inicio">Início</a></li>
-                <li><a href="por-que-acompanhar.html">Por que acompanhar?</a></li>
+                <li><a href="bookingForm">Agendar Sessão</a></li>
               
                 <li><a href="#sobre">Sobre mim</a></li>
             </ul>
         </nav>
     </header>
 
+  <main>
     <section class="hero" id="inicio">
-        <div class="carousel" role="region" aria-label="Galeria de imagens">
-            <div class="carousel-images" aria-live="polite">
-                <img src="img/fundo01.png" alt="Fundo marmore" class="carousel-image active">
-                <img src="img/fundo02.png" alt="Fundo marmore" class="carousel-image">
-                <img src="img/fundo03.png" alt="Fundo marmore" class="carousel-image">
-            </div>
+      <div class="carousel" role="region" aria-label="Galeria de imagens">
+        <div class="carousel-images" aria-live="polite">
+          <img src="img/fundo01.webp" alt="Fundo mármore" class="carousel-image active">
+          <img src="img/fundo02.webp" alt="Fundo mármore" class="carousel-image">
+          <img src="img/fundo03.webp" alt="Fundo mármore" class="carousel-image">
         </div>
-        <div class="hero-content">
-            <h1>Acolhimento e Desenvolvimento</h1>
-            <p>Atendimento psicológico infantil. 
-               Um espaço seguro e acolhedor onde cada criança é única e especial, 
-               com acompanhamento personalizado para desenvolvimento pleno.</p>
-            <div class="hero-buttons">
-                <a href="por-que-acompanhar.html" class="btn-primary">Por que acompanhar?</a>
-                <a href="#sobre" class="btn-secondary">Sobre mim</a>
-            </div>
+      </div>
+      <div class="hero-content">
+        <h1>Acolhimento e Desenvolvimento</h1>
+        <p>Atendimento psicológico infantil. Um espaço seguro e acolhedor onde cada criança é única e especial, com acompanhamento personalizado para desenvolvimento pleno.</p>
+        <div class="hero-buttons">
+          <a href="por-que-acompanhar.html" class="btn-primary">Por que acompanhar?</a>
+          <a href="#sobre" class="btn-secondary">Sobre mim</a>
         </div>
+      </div>
     </section>
 
     <section class="services-container" id="servicos">
-        <h2 class="section-title">Plano de Acompanhamento</h2>
-        <div class="services-grid">
-            <div class="service-card" data-service="Sessão Individual" data-price="90,00">
-                <div class="service-icon">🧩</div>
-                <h3>Sessão Individual</h3>
-                <p>Atendimento personalizado, focado nas necessidades específicas da criança.</p>
-                 <p>Serviço também disponível, de forma individual, para acompanhamento de pais.</p>
-                <button class="select-service">Agendar Consulta</button>
-            </div>
-
-
-
-             <!-- <div class="service-card featured" data-service="Pacote Mensal" data-price="320,00">
-                <div class="service-icon">🌟</div>
-                <h3>Pacote Mensal</h3>
-                <p>4 sessões mensais com acompanhamento contínuo, relatório de desenvolvimento
-                   e suporte via WhatsApp para dúvidas entre as sessões.</p>
-                <div class="price">R$ 320,00</div>
-                <div class="price-detail">Economia de R$ 40,00</div>
-                <button class="select-service">Agendar Consulta</button> -->
-            </div> 
+      <h2 class="section-title">Plano de Acompanhamento</h2>
+      <div class="services-grid">
+        <div class="service-card" data-service="Sessão Individual" data-price="90,00">
+          <div class="service-icon">🧩</div>
+          <h3>Sessão Individual</h3>
+          <p>Atendimento personalizado, focado nas necessidades específicas da criança.</p>
+          <p>Serviço também disponível, de forma individual, para acompanhamento de pais.</p>
+          <button class="select-service">Agendar Consulta</button>
         </div>
+      </div>
 
-        <!-- Formulário de Agendamento -->
-        <div class="booking-form" id="bookingForm">
-            <h3>Agendar Consulta</h3>
-            <p class="selected-service-info">Tratamento selecionado: <span id="selectedService">Nenhum selecionado</span></p>
-            <form id="appointmentForm">
-                <div class="form-group">
-                    <label for="name">Nome completo</label>
-                    <input type="text" id="name" name="name" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="whatsapp">WhatsApp</label>
-                    <input type="tel" id="whatsapp" name="whatsapp" 
-                           pattern="[0-9]{11}" 
-                           placeholder="11 999999999"
-                           required>
-                </div>
-
-                <div style="text-align: center;">
-                    <button type="submit" class="btn-primary">Solicitar Agendamento via WhatsApp</button>
-                </div>
-               
-                <p class="consent-text">Ao continuar, você aceita que os dados fornecidos serão utilizados para contato, agendamento de consultas e envio de comunicações importantes.</p>
-            </form>
-        </div>
+      <!-- Formulário de Agendamento -->
+      <div class="booking-form" id="bookingForm">
+        <h3>Agendar Sessão</h3>
+        <p class="selected-service-info">Tratamento selecionado: <span id="selectedService">Nenhum selecionado</span></p>
+        <form id="appointmentForm">
+          <div class="form-group">
+            <label for="name">Nome completo</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          <div class="form-group">
+            <label for="whatsapp">WhatsApp</label>
+            <input type="tel" id="whatsapp" name="whatsapp" pattern="[0-9]{11}" placeholder="11 999999999" required>
+          </div>
+          <div class="form-group">
+            <label for="appointmentDate">Data da sessão</label>
+            <input type="date" id="appointmentDate" name="appointmentDate" required>
+          </div>
+          <div id="formFeedback" class="form-feedback" style="color: red; text-align: center; margin-bottom: 1rem;"></div>
+          <div style="text-align: center;">
+            <button id="agendarConsultaBtn" type="submit" class="btn-primary">Solicitar Agendamento via WhatsApp</button>
+          </div>
+          <p class="consent-text">Ao continuar, você aceita que os dados fornecidos serão utilizados para contato, agendamento de consultas e envio de comunicações importantes.</p>
+        </form>
+      </div>
     </section>
 
     <section class="about-section" id="sobre">
+      <figure>
         <img src="img/01.png" alt="Psicóloga Letícia Pavan" class="profile-img">
-        <div class="about-content">
-            <h2>Sobre mim</h2>
-            <p>Desde muito jovem, sempre tive uma conexão especial com crianças. Minha paixão pelo desenvolvimento infantil 
-               me levou a escolher a psicologia como profissão, onde encontrei minha verdadeira vocação. A psicologia infantil 
-               me permitiu unir minha paixão por ajudar com meu amor pelo universo único de cada criança.</p>
-            
-            <p>Tratando de forma profunda e personalizada, dedico minha prática ao acompanhamento terapêutico de crianças 
-               e suas famílias, criando um espaço onde cada pequeno pode se desenvolver em seu próprio ritmo.</p>
-
-            <p>Meu compromisso é proporcionar um ambiente seguro e acolhedor, onde cada criança possa 
-               desenvolver seu potencial único, respeitando seu próprio tempo e características.</p>
-        </div>
+        <figcaption class="centered-caption">Psicóloga Letícia Pavan</figcaption>
+      </figure>
+      <div class="about-content">
+        <h2>Sobre mim</h2>
+        <p>Desde muito jovem, sempre tive uma conexão especial com crianças. Minha paixão pelo desenvolvimento infantil me levou a escolher a psicologia como profissão, onde encontrei minha verdadeira vocação. A psicologia infantil me permitiu unir minha paixão por ajudar com meu amor pelo universo único de cada criança.</p>
+        <p>Tratando de forma profunda e personalizada, dedico minha prática ao acompanhamento terapêutico de crianças e suas famílias, criando um espaço onde cada pequeno pode se desenvolver em seu próprio ritmo.</p>
+      </div>
     </section>
 
-    <section class="location-section">
-        <div class="location-content">
-            <h2>📍 Localização </h2>
-            <p>
-                <span class="location-icon"></span>
-                Instituto Skinner - Av. Paraná - Lucas do Rio Verde, MT, 78466-523
-            </p>
-            <div class="map-container">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d971.5970572282529!2d-55.9279343!3d-13.0745641!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x93a0f31519f5bdb5%3A0xbabe92fc6ef849fc!2sInstituto%20Skinner!5e0!3m2!1spt-BR!2sbr!4v1739568331134!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
-            <div class="map-link-container">
-                <a href="https://maps.app.goo.gl/ezoycJqQ1H4xit1BA" 
-                   class="map-link" 
-                   target="_blank" 
-                   rel="noopener noreferrer">
-                    Ver no Google Maps
-                </a>
-            </div>
+    <section class="location-section" id="localizacao">
+      <div class="location-content">
+        <h2>📍 Localização </h2>
+        <p>
+          <span class="location-icon"></span>
+          Instituto Skinner - Av. Paraná - Lucas do Rio Verde, MT, 78466-523
+        </p>
+        <div class="map-container">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d971.5970572282529!2d-55.9279343!3d-13.0745641!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x93a0f31519f5bdb5%3A0xbabe92fc6ef849fc!2sInstituto%20Skinner!5e0!3m2!1spt-BR!2sbr!4v1739568331134!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
+        <div class="map-link-container">
+          <a href="https://maps.app.goo.gl/ezoycJqQ1H4xit1BA" class="map-link" target="_blank" rel="noopener noreferrer">
+            Ver no Google Maps
+          </a>
+        </div>
+      </div>
     </section>
+  </main>
 
-    <footer>
-        <div class="footer-content">
-            <p>
-                <a href="https://www.instagram.com/leticiapavaan.psi" 
-                   class="social-link" 
-                   target="_blank" 
-                   rel="noopener noreferrer">
-                    <img width="24" height="24" src="https://img.icons8.com/fluency/48/instagram-new.png" alt="Instagram"/> @leticiapavaan.psi
-                </a>
-            </p>
-            <div class="footer-divider"></div>
-            <p>© 2025 Psicóloga Letícia Pavan | Psicóloga Infantil | CRP: 18/8701</p>
-            <div class="footer-divider"></div>
-            <p>Site desenvolvido por: 
-                <a href="https://lucaspavani.netlify.app/" 
-                   target="_blank" 
-                   rel="noopener noreferrer">Lucas Pavani</a>
-            </p>
-        </div>
-    </footer>
+  <footer>
+    <div class="footer-content">
+      <p>
+        <a href="https://www.instagram.com/leticiapavaan.psi" class="social-link" target="_blank" rel="noopener noreferrer">
+          <img width="24" height="24" src="https://img.icons8.com/fluency/48/instagram-new.png" alt="Instagram"/> @leticiapavaan.psi
+        </a>
+      </p>
+      <div class="footer-divider"></div>
+      <p>© 2025 Psicóloga Letícia Pavan | Psicóloga Infantil | CRP: 18/8701</p>
+      <div class="footer-divider"></div>
+      <p>Site desenvolvido por: 
+        <a href="https://lucaspavani.netlify.app/" target="_blank" rel="noopener noreferrer">Lucas Pavani</a>
+      </p>
+    </div>
+    <div class="footer-content">
+      <!-- ... outras informações do rodapé ... -->
+  
+      <div class="footer-divider"></div>
+      <p>
+        <a href="politica-privacidade.html">Política de Privacidade e Cookies</a>
+      </p>
+    </div>
+  </footer>
 
-    <!-- Adicionar o script do EmailJS antes do seu script.js -->
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-
-    <!-- Inicializar o EmailJS com sua Public Key -->
-    <script type="text/javascript">
-       (function() {
-          emailjs.init("afwYf6RRsIfuFTf3U"); // Substitua pela sua chave pública do EmailJS
-       })();
-    </script>
-
-    <!-- Adicionar o script antes do fechamento do body -->
-    <script src="script.js?v=1.0.1"></script>
-
-    <!-- Adicionar validações extras no formulário -->
-    <script>
-    document.getElementById('appointmentForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        // Validar formato do telefone
-        const whatsapp = document.getElementById('whatsapp').value;
-        if (!/^[0-9]{11}$/.test(whatsapp)) {
-            alert('Por favor, insira um número de WhatsApp válido');
-            return;
-        }
-        
-        // Validar nome (mínimo 3 caracteres)
-        const name = document.getElementById('name').value;
-        if (name.length < 3) {
-            alert('Por favor, insira um nome válido');
-            return;
-        }
-
-        // ... resto do código
-    });
-    </script>
-
-    <script>
-        function startCarousel() {
-            const images = document.querySelectorAll('.carousel-image');
-            let currentIndex = 0;
-
-            // Garante que a primeira imagem está visível
-            images[0].classList.add('active');
-
-            setInterval(() => {
-                // Remove a classe active da imagem atual
-                images[currentIndex].classList.remove('active');
-                
-                // Atualiza o índice para a próxima imagem
-                currentIndex = (currentIndex + 1) % images.length;
-                
-                // Adiciona a classe active na próxima imagem
-                images[currentIndex].classList.add('active');
-                
-                console.log('Mudando para imagem:', currentIndex); // Debug
-            }, 3000); // Muda a cada 3 segundos
-        }
-
-        // Inicia o carrossel quando a página carregar
-        window.addEventListener('load', startCarousel);
-    </script>
-
-    <script src="theme.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <script src="script.js?v=1.0.1"></script>
+  <script src="theme.js"></script>
+  <div class="cookie-consent" id="cookieConsent">
+    <p>
+      Usamos cookies e outras tecnologias para melhorar sua experiência.
+      <a href="politica-privacidade.html" target="_blank">Leia nossa Política de Privacidade</a>.
+    </p>
+    <button id="acceptCookies">Aceitar</button>
+  </div>
+  
 </body>
 </html>
