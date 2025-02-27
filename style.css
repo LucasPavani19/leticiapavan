@@ -987,9 +987,7 @@
       padding: 8px 4px;
       white-space: nowrap;
     }
-    nav h4 {
-      display: none;
-    }
+   
     header {
       padding: 0.5rem 1rem;
     }
@@ -1130,6 +1128,30 @@
       text-align: center;
       margin: 0 auto 1rem;
       max-width: 100%;
+    }
+  }
+  nav ul {
+    display: inline-flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 1rem; /* Espaçamento padrão */
+  }
+  
+  nav ul li {
+    position: relative;
+  }
+  
+  /* Insere o traço após cada li, exceto no último */
+  nav ul li:not(:last-child)::after {
+    content: "|";
+    margin-left: 1rem;
+    color: var(--text-color);
+  }
+  
+  @media (max-width: 480px) {
+    nav ul {
+      gap: 0.5rem; /* Reduz o espaçamento no mobile */
     }
   }
   
