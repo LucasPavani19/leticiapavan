@@ -1155,3 +1155,58 @@
     }
   }
   
+  /* Ajustar a seção "Acompanhamento" em telas pequenas */
+@media (max-width: 768px) {
+    .services-container {
+        padding: 2rem 1rem; /* Reduzir o padding para garantir que o conteúdo se ajuste */
+    }
+
+    .section-title {
+        font-size: 1.8rem; /* Reduzir o tamanho da fonte do título */
+        text-align: center; /* Centralizar o título */
+    }
+
+    .services-grid {
+        display: flex;
+        flex-direction: column; /* Organiza as cartas de serviço em uma coluna */
+        gap: 1.5rem;
+        padding: 0;
+        margin: 2rem 0;
+    }
+
+    .service-card {
+        width: 100%; /* Garantir que as cartas de serviço ocupem toda a largura disponível */
+        padding: 2rem 1rem;
+    }
+
+    .service-card h3 {
+        font-size: 1.4rem; /* Ajustar o tamanho da fonte do título dentro das cartas */
+    }
+}
+
+/* Ajustar em telas ainda menores */
+@media (max-width: 480px) {
+    .section-title {
+        font-size: 1.6rem; /* Menor tamanho para telas muito pequenas */
+    }
+
+    .service-card {
+        padding: 1.5rem 1rem; /* Ajustar o padding das cartas */
+    }
+
+    .service-card h3 {
+        font-size: 1.3rem; /* Tamanho do título ajustado para telas pequenas */
+    }
+}
+/* Ajuste para o botão "Sobre mim" em telas pequenas */
+@media (max-width: 768px) {
+  .hero-buttons {
+    margin-top: 3rem; /* Espaçamento maior entre o texto e os botões */
+    padding-bottom: 3rem; /* Espaçamento adicional na parte inferior */
+  }
+
+  .btn-secondary {
+    margin-bottom: 2rem; /* Aumenta a distância abaixo do botão */
+    padding: 12px 30px; /* Ajusta o padding para garantir que o botão tenha um tamanho apropriado */
+  }
+}
