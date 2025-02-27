@@ -1094,3 +1094,42 @@
     margin: 0 auto;
   }
   
+  @media (max-width: 768px) {
+    /* Ajusta a disposição da seção em uma única coluna */
+    .about-section {
+      grid-template-columns: 1fr;   /* Em desktop são 2 colunas (imagem + texto) */
+      gap: 2rem;
+      padding: 2rem 1rem;
+      margin: 1rem auto;
+      text-align: center;          /* Centraliza conteúdo dentro da seção */
+    }
+  
+    /* Centraliza a imagem */
+    .profile-img {
+      width: 200px;
+      height: 200px;
+      margin: 0 auto 1rem;         /* "0 auto" centraliza horizontalmente */
+      display: block;
+    }
+  
+    /* Remove o padding-right e centraliza texto apenas em mobile */
+    .about-content {
+      padding-right: 0;
+      margin: 0 auto;
+      text-align: center;
+    }
+  
+    /* Garante que o título e parágrafos fiquem centralizados em mobile */
+    .about-content h2 {
+      font-size: 1.8rem;
+      text-align: center;
+    }
+  
+    .about-content p {
+      font-size: 0.95rem;
+      text-align: center;
+      margin: 0 auto 1rem;
+      max-width: 100%;
+    }
+  }
+  
