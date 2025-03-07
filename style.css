@@ -1212,3 +1212,35 @@
     padding: 12px 30px; /* Ajusta o padding para garantir que o botão tenha um tamanho apropriado */
   }
 }
+ /* Botão Instagram */
+.btn-instagram {
+  display: inline-block;
+  background: linear-gradient(
+    45deg,
+    #f09433,
+    #e6683c,
+    #dc2743,
+    #cc2366,
+    #bc1888
+  );
+  color: #fff;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 50px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  margin-top: 10px;
+}
+
+.btn-instagram:hover {
+  transform: scale(1.05);
+  background: linear-gradient(
+    45deg,
+    #e6683c,
+    #dc2743,
+    #cc2366,
+    #bc1888,
+    #9f0076
+  );
+}
