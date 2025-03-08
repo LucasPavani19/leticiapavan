@@ -12,7 +12,7 @@ function startCarousel() {
         images[currentIndex].classList.remove('active');
         currentIndex = (currentIndex + 1) % images.length;
         images[currentIndex].classList.add('active');
-    }, 4000);
+    }, 5000);
 }
 
 // Função para sanitizar entradas (removendo caracteres especiais potencialmente perigosos)

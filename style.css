@@ -288,7 +288,6 @@
     text-align: center;
     padding: 6rem 2rem;
     margin-top: 60px;
-    background: linear-gradient(rgba(0, 0, 0, 0.4), var(--overlay)), url('img/fundo01.webp');
     background-size: cover;
     background-position: center;
   }
@@ -344,6 +343,20 @@
     flex-wrap: wrap;
   }
   
+  @media (max-width: 768px) {
+    .hero {
+      padding: 10rem 2rem 4rem; 
+    }
+    .hero {
+      align-items: flex-start;
+      padding: 4rem 2rem; 
+    }
+    .hero-content {
+      margin-top: 5rem; 
+  }
+  }
+  
+  
   .carousel {
     position: absolute;
     top: 0;
@@ -376,6 +389,10 @@
     opacity: 1;
   }
   
+  .carousel-image {
+    filter: brightness(40%); /* Reduz o brilho para escurecer a imagem */
+}
+
   /* ========================= */
   /* Seções Específicas       */
   /* ========================= */
